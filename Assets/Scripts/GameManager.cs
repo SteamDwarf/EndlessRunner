@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private RoadMover roadMover;
     private UIManager uIManager;
     private int coinsCount;
 
@@ -17,5 +18,10 @@ public class GameManager : MonoBehaviour
     {
         coinsCount += 1;
         uIManager.UpdateCoinText(coinsCount);
+    }
+
+    public void CollideWithObstacle() 
+    {
+        roadMover.Stop();
     }
 }

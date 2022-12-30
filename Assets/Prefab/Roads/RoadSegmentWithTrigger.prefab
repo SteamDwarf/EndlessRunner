@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3714202636262574317}
   - component: {fileID: 3357686707664811565}
-  - component: {fileID: 2648239956140973551}
   m_Layer: 0
   m_Name: SpawnTrigger
   m_TagString: SpawnTrigger
@@ -46,18 +45,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 23.938763, y: 11.582888, z: 1}
   m_Center: {x: 11.469381, y: 5.291444, z: 0}
---- !u!114 &2648239956140973551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841708602959103996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e87ca2d4427a39f4683a48ae8101422d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2937888182198504656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1671576169310946981, guid: 7fc0957e9122a2048a13d36a4d399298, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1741577210474837226, guid: 7fc0957e9122a2048a13d36a4d399298, type: 3}
       propertyPath: m_LocalPosition.y

@@ -5,36 +5,45 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float rotateSpeed;
     [SerializeField] private float jumpPower;
+    [SerializeField] private float sideMoveSpeed;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float roadLanesWidth;
+    [SerializeField] private KeyCode leftKey = KeyCode.A;
+    [SerializeField] private KeyCode rightKey = KeyCode.D;
 
 
-    private SpawnManager spawnManager;
     private Rigidbody rb;
-    private float rotateMoving;
     private bool isPressedJump = false;
+    private Vector3 targetPos;
+    private bool isAlive = true;
 
     private void Awake() 
     {
-        spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
         rb = gameObject.GetComponent<Rigidbody>();
+        targetPos = transform.position;
     }
 
     void Update()
     {
-        rotateMoving = Input.GetAxis("Horizontal");
+        if(!isAlive) return;
+
+        if(IsGrounded()) 
+        {
+            if(Input.GetKeyDown(leftKey)) targetPos.x = Mathf.Clamp(transform.position.x - roadLanesWidth, 6, 19);
+            if(Input.GetKeyDown(rightKey)) targetPos.x = Mathf.Clamp(transform.position.x + roadLanesWidth, 6, 19);
+
+            if(Vector3.Distance(transform.position, targetPos) > 0.1) 
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, sideMoveSpeed * Time.deltaTime);
+            }
+        }
         isPressedJump = Input.GetButtonDown("Jump") || isPressedJump;
     }
 
     private void FixedUpdate() 
     {
-        Vector3 moveVector = transform.forward * Time.deltaTime * speed;
-
-        moveVector.y = rb.velocity.y;
-        rb.velocity = moveVector;
-        transform.Rotate(Vector3.up, Time.deltaTime * rotateSpeed * rotateMoving);
+        if(!isAlive) return;
 
         if(isPressedJump && IsGrounded()) Jump();
     }
@@ -45,10 +54,19 @@ public class PlayerController : MonoBehaviour
         isPressedJump = false;
     }
 
-    private bool IsGrounded() 
+    public bool IsGrounded() 
     {
         Ray ray = new Ray(transform.position, -Vector3.up);
         return Physics.Raycast(ray, 0.2f, groundLayer);
     }
 
+    public void Stop() 
+    {
+        isAlive = false;
+    }
+
+    public void Punch() 
+    {
+        //rb.AddForce(new Vector3(0, 0, -2000));
+    }
 }

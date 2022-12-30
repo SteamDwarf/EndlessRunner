@@ -8,6 +8,7 @@ TagManager:
   - SpawnTrigger
   - CarBackTrigger
   - Ground
+  - Obstacle
   layers:
   - Default
   - TransparentFX
