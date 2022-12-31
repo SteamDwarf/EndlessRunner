@@ -19,6 +19,7 @@ public class PlayerAnimator : MonoBehaviour
     void Update()
     {
         animator.SetBool("IsJumping", !playerController.IsGrounded());
+        animator.SetInteger("Move", (int)playerController.SideMoveState);
     }
 
     public void PlayFallAnimation() 
