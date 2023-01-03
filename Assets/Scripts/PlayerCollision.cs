@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(Player))]
 public class PlayerCollision : MonoBehaviour
 {
     private GameManager gameManager;
-    private PlayerController playerController;
-    private PlayerAnimator playerAnimator;
+    private Player player;
 
     private void Awake() 
     {
         gameManager = GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        playerController = gameObject.GetComponent<PlayerController>();
-        playerAnimator = gameObject.GetComponent<PlayerAnimator>();
+        player = gameObject.GetComponent<Player>();
     }
     private void OnCollisionEnter(Collision other) 
     {
@@ -22,9 +20,7 @@ public class PlayerCollision : MonoBehaviour
             Vector3 direction = transform.position - other.transform.position;
 
             gameManager.CollideWithObstacle();
-            playerController.Stop();
-            playerAnimator.PlayFallAnimation();
-            //playerController.Punch();
+            player.ObstacleCollided();
         }
     }
 }

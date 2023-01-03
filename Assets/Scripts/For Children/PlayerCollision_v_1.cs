@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController_v_2))]
 public class PlayerCollision_v_1 : MonoBehaviour
 {
     private GameManager_v_1 gameManager;

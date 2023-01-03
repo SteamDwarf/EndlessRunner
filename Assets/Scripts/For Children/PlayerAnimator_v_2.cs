@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(PlayerController_v_3))]
 public class PlayerAnimator_v_2 : MonoBehaviour
 {
     private Animator animator;

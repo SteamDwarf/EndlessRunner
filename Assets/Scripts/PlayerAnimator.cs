@@ -24,6 +24,6 @@ public class PlayerAnimator : MonoBehaviour
 
     public void PlayFallAnimation() 
     {
-        animator.SetBool("IsFall", true);
+        animator.SetTrigger("Collide");
     }
 }

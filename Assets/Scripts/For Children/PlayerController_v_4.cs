@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController_v_3 : MonoBehaviour
+public class PlayerController_v_4 : MonoBehaviour
 {
     [SerializeField] private float sideMoveSpeed;
     [SerializeField] private float roadLanesWidth;
@@ -16,6 +16,7 @@ public class PlayerController_v_3 : MonoBehaviour
     [SerializeField] private Transform groundCheck;
 
     public bool IsAlive {get; private set;}
+    public int playerMoveState {get; private set;}
     private Rigidbody rb;
     private Vector3 targetPos;
     private bool isPressedJump = false;
@@ -25,6 +26,7 @@ public class PlayerController_v_3 : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         targetPos = transform.position;
         IsAlive = true;
+        playerMoveState = 0;
     }
     void Update()
     {
@@ -43,7 +45,7 @@ public class PlayerController_v_3 : MonoBehaviour
     {
         if(!IsAlive) return;
 
-        if(isPressedJump && IsGrounded()) Jump();
+        if(isPressedJump && IsGrounded() && playerMoveState == 0) Jump();
     }
 
     private void Move() 
@@ -51,15 +53,20 @@ public class PlayerController_v_3 : MonoBehaviour
         if(Input.GetKeyDown(leftKey)) 
         {
             targetPos.x = Mathf.Clamp(transform.position.x - roadLanesWidth, 6, 19);
+            playerMoveState = -1;
         }
         if(Input.GetKeyDown(rightKey)) 
         {
             targetPos.x = Mathf.Clamp(transform.position.x + roadLanesWidth, 6, 19);
+            playerMoveState = 1;
         }
         if(Vector3.Distance(transform.position, targetPos) > 0.1) 
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, sideMoveSpeed * Time.deltaTime);
-        } 
+        } else 
+        {
+            playerMoveState = 0;
+        }
     }
 
     private void Jump() 
