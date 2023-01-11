@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(MeshCollider))]
 public class PlayerCollision : MonoBehaviour
 {
     private GameManager gameManager;

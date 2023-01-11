@@ -8,3 +8,9 @@ public enum PlayerMoveState
     MoveLeft = -1,
     MoveRight = 1
 }
+
+public enum Scenes 
+{
+    MainMenu = 0,
+    Game = 1
+}

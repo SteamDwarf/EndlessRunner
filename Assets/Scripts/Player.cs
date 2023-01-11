@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(PlayerAnimator))]
+[RequireComponent(typeof(PlayerCollision))]
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(PlayerTrigger))]
 public class Player : MonoBehaviour
 {
     private PlayerController controller;

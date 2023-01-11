@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f40425dd5025c44b5f057a806ed49c, type: 3}
+  m_Name: DozzySkin
+  m_EditorClassIdentifier: 
+  skinName: Dozzy
+  price: 200
+  prefab: {fileID: 44436084195693740, guid: 5aa1427a70aba1845a46bdd104c95c1c, type: 3}
+  skinSprite: {fileID: 21300000, guid: bc40e9ac0d60fcd49a84cd718dbee957, type: 3}

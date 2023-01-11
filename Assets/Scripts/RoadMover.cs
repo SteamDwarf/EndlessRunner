@@ -6,7 +6,7 @@ public class RoadMover : MonoBehaviour
 {
     [SerializeField] private float speed;
 
-    private bool isMove = true;
+    private bool isMove = false;
 
     void Update()
     {
@@ -14,6 +14,11 @@ public class RoadMover : MonoBehaviour
         {
             transform.Translate(-transform.forward * Time.deltaTime * speed);
         }
+    }
+
+    public void Start() 
+    {
+        isMove = true;
     }
 
     public void Stop() 
